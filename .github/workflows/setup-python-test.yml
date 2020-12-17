@@ -10,7 +10,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        python-version: [ 'pypy2', 'pypy3' ]
+        python-version: [ 'pypy3' ]
     name: ${{ matrix.python-version }} sample
     steps:
       - uses: actions/checkout@v2
@@ -24,10 +24,10 @@ jobs:
       - name: Remove bin folder
         run: |
           python --version
-          rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
+          rm -r "C:/hostedtoolcache/windows/PyPy/3.6.12/x86/bin"
 
       - name: Check bin folder
-        run: Get-ChildItem -Path "C:/hostedtoolcache/windows/PyPy/2.7.18/x86"
+        run: Get-ChildItem -Path "C:/hostedtoolcache/windows/PyPy/3.6.12/x86"
 
       - name: "Test"
         run: |
