@@ -29,6 +29,7 @@ jobs:
 
       - name: "Test"
         run: | 
+          pip install tox
           git clone "https://github.com/tox-dev/tox.git" --branch "master"
           cd tox
           git checkout "d70be25d29374df15ec5aa5c6fe07a46f79f06c7"
