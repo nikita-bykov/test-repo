@@ -21,16 +21,16 @@ jobs:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
-      - name: Remove bin folder
-        run: rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
+      # - name: Remove bin folder
+      #   run: rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
 
       - name: Check bin folder
         run: Get-ChildItem -Path "C:/hostedtoolcache/windows/PyPy/2.7.18/x86"
 
       - name: "Test"
         run: | 
-          pip install tox
-          tox --version
+          pip3 install arrow
+          ${{ matrix.python-version }} -c "import arrow; a = arrow.get('2013-05-11T21:23:58.970460+07:00'); print(a)"
         shell: bash
 
           #         git clone "https://github.com/tox-dev/tox.git" --branch "master"
