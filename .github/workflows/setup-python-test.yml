@@ -25,6 +25,7 @@ jobs:
         run: |
           python --version
           rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
+          rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/Scripts"
 
       - name: Check bin folder
         run: Get-ChildItem -Path "C:/hostedtoolcache/windows/PyPy/2.7.18/x86"
