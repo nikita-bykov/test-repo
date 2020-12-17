@@ -1,0 +1,28 @@
+name: Create Pull Request
+on: push
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  build:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: [ 'pypy2', 'pypy3' ]
+    name: ${{ matrix.python-version }} sample
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: x64
+
+      - name: Remove bin folder
+        run: rm -r "$env:AGENT_TOOLSDIRECTORY/PyPy/2.7.18/x86/bin"
+
+      - name: Remove bin folder
+        run: Get-ChildItem -Path "$env:AGENT_TOOLSDIRECTORY/PyPy/2.7.18/x86"

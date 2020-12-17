@@ -1,0 +1,5 @@
+jobs:
+- job: 'Tools_Cache_Python'
+  steps:
+  - template: /templates/template1.yml
+  - template: /templates/template2.yml

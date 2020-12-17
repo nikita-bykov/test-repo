@@ -1,0 +1,5 @@
+steps:
+- script: |
+   echo "template1"
+   
+  displayName: 'Template1'
