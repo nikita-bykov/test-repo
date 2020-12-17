@@ -22,23 +22,16 @@ jobs:
           architecture: x64
 
       - name: Remove bin folder
-        run: rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
+        run: |
+          python --version
+          rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
 
       - name: Check bin folder
         run: Get-ChildItem -Path "C:/hostedtoolcache/windows/PyPy/2.7.18/x86"
 
       - name: "Test"
         run: | 
-          pip install tox
-          git clone "https://github.com/tox-dev/tox.git" --branch "master"
-          cd tox
-          git checkout "d70be25d29374df15ec5aa5c6fe07a46f79f06c7"
-          tox
+          python --version
+          python -m pip install arrow
+          python -c "import arrow;print(arrow.get('2013-05-11T21:23:58.970460+07:00'))"
         shell: bash
-
-      - name: which tox
-        run: which tox
-
-          #           pythonVersion=${{ matrix.python-version }}
-          # pyVer=${pythonVersion/\./''}
-          # pyVer=${pyVer/py/''}
