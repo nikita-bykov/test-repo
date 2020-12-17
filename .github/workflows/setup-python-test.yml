@@ -29,17 +29,15 @@ jobs:
 
       - name: "Test"
         run: | 
-          pip3 install arrow
-          arrow --version
+          git clone "https://github.com/tox-dev/tox.git" --branch "master"
+          cd tox
+          git checkout "d70be25d29374df15ec5aa5c6fe07a46f79f06c7"
+          tox -e --skip-missing-interpreters false
         shell: bash
 
-      - name: which arrow
-        run: which arrow
+      - name: which tox
+        run: which tox
 
-          #         git clone "https://github.com/tox-dev/tox.git" --branch "master"
-          # cd tox
-          # git checkout "d70be25d29374df15ec5aa5c6fe07a46f79f06c7"
-          # pythonVersion=${{ matrix.python-version }}
+          #           pythonVersion=${{ matrix.python-version }}
           # pyVer=${pythonVersion/\./''}
           # pyVer=${pyVer/py/''}
-          # tox -e py$pyVer --skip-missing-interpreters false
