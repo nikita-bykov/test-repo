@@ -15,29 +15,26 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Remove bin folder
-        run: rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
-
       - name: Setup python
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
-      # - name: Remove bin folder
-      #   run: rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
+      - name: Remove bin folder
+        run: rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
 
       - name: Check bin folder
         run: Get-ChildItem -Path "C:/hostedtoolcache/windows/PyPy/2.7.18/x86"
 
       - name: "Test"
         run: | 
-          pip install tox
-          tox --version
+          pip3 install arrow
+          arrow --version
         shell: bash
 
-      - name: which tox
-        run: which tox
+      - name: which arrow
+        run: which arrow
 
           #         git clone "https://github.com/tox-dev/tox.git" --branch "master"
           # cd tox
