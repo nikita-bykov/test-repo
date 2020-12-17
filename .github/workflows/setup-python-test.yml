@@ -19,11 +19,11 @@ jobs:
         uses: nikita-bykov/setup-python@improve-usepypy-on-windows
         with:
           python-version: ${{ matrix.python-version }}
-          architecture: x64
 
       - name: Remove bin folder
         run: |
           python --version
+          ls "C:/hostedtoolcache/windows/PyPy/3.6.12/x86/Scripts"
           rm -r "C:/hostedtoolcache/windows/PyPy/3.6.12/x86/bin"
 
       - name: Check bin folder
