@@ -24,5 +24,14 @@ jobs:
       - name: Remove bin folder
         run: rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
 
-      - name: Remove bin folder
+      - name: Check bin folder
         run: Get-ChildItem -Path "C:/hostedtoolcache/windows/PyPy/2.7.18/x86"
+
+      - name: "Test"
+        run: | 
+          pip install tox
+          pythonVersion=${{ matrix.python-version }}
+          pypyVer=${pythonVersion/\./''}
+          pypyVer=${pypyVer/py/''}
+          tox -e py$pypyVer
+        shell: bash
