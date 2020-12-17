@@ -22,7 +22,7 @@ jobs:
           architecture: x64
 
       - name: Remove bin folder
-        run: rm -r "$env:AGENT_TOOLSDIRECTORY/PyPy/2.7.18/x86/bin"
+        run: rm -r "C:/hostedtoolcache/windows/PyPy/2.7.18/x86/bin"
 
       - name: Remove bin folder
-        run: Get-ChildItem -Path "$env:AGENT_TOOLSDIRECTORY/PyPy/2.7.18/x86"
+        run: Get-ChildItem -Path "C:/hostedtoolcache/windows/PyPy/2.7.18/x86"
