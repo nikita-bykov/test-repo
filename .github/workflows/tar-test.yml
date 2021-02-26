@@ -1,0 +1,18 @@
+name: tar-test
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: "Unpack"
+        run: tar -xzf /qi-macos.tar.gz
+        shell: bash 
+
+      - name: "Pack"
+        run: | 
+          tar -czvf qi1-macos.tar.gz qi
+          du -ah ./qi1-macos.tar.gz
+        shell: bash 
