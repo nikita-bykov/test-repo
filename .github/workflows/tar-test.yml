@@ -13,6 +13,7 @@ jobs:
 
       - name: "Pack"
         run: | 
-          tar -czvf qi1-macos.tar.gz qi
+          tar -cvf qi1-macos.tar.gz qi
+          gzip qi.tar  > qi.tgz
           du -ah qi1-macos.tar.gz
         shell: bash 
