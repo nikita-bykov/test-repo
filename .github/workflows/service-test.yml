@@ -24,7 +24,7 @@ jobs:
         ports:
         - 9200/tcp
         options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
-# https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix
+
     strategy:
       fail-fast: false
       matrix:
@@ -37,6 +37,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
+          ruby-version: 2.6
           bundler-cache: true
       - name: Create DB
         env:
