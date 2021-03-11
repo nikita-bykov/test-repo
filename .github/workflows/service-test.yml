@@ -1,0 +1,60 @@
+name: Main
+on:
+  workflow_dispatch:
+
+jobs:
+  test_runner:
+    name: CI
+    runs-on: ubuntu-latest
+    # If you need DB like MySQL then define service below.
+    # Example for PostgreSQL and Redis can be found here:
+    # https://github.com/actions/example-services/tree/master/.github/workflows
+    services:
+      # How to use MySQL
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+        - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=10
+      # How to use Elasticsearch
+      elasticsearch:
+        image: elasticsearch:6.8.3
+        ports:
+        - 9200/tcp
+        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
+# https://help.github.com/en/articles/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix
+    strategy:
+      fail-fast: false
+      matrix:
+        test_folder: [test/models]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Create DB
+        env:
+          RAILS_ENV: test
+          DB_PASSWORD: root
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+        run: |
+          sudo /etc/init.d/mysql start
+          cp config/database.ci.yml config/database.yml
+          bin/rails db:setup
+      - name: Setup translations
+        run: |
+          bin/rails makemo > /dev/null 2>&1
+      - name: Run tests
+        env:
+          DB_PASSWORD: root
+          DB_PORT: ${{ job.services.mysql.ports[3306] }} # get randomly assigned published port
+          ELASTICSEARCH_PORT: ${{ job.services.elasticsearch.ports[9200] }}
+          RAILS_ENV: test
+        run: |
+          bin/rails test ${{matrix.test_folder}}
