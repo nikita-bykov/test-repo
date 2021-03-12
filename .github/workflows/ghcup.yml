@@ -1,5 +1,5 @@
 name: ghcup
-on: push
+on: workflow_dispatch
 
 defaults:
   run:

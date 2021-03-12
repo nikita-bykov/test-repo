@@ -1,4 +1,4 @@
-name: Main
+name: Service_test
 on:
   workflow_dispatch:
 
@@ -19,11 +19,6 @@ jobs:
         - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=10
       # How to use Elasticsearch
-      elasticsearch:
-        image: elasticsearch:6.8.3
-        ports:
-        - 9200/tcp
-        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
 
     steps:
       - name: Checkout
@@ -31,4 +26,4 @@ jobs:
         with:
           fetch-depth: 1
       - name: mysql version
-        run: mysql --version
+        run: docker exec `docker ps -q` mysqld --version
