@@ -6,11 +6,7 @@ jobs:
   test_runner:
     name: CI
     runs-on: ubuntu-latest
-    # If you need DB like MySQL then define service below.
-    # Example for PostgreSQL and Redis can be found here:
-    # https://github.com/actions/example-services/tree/master/.github/workflows
     services:
-      # How to use MySQL
       mysql:
         image: mysql:5.7
         env:
@@ -18,7 +14,6 @@ jobs:
         ports:
         - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=10
-      # How to use Elasticsearch
 
     steps:
       - name: Checkout
@@ -26,4 +21,9 @@ jobs:
         with:
           fetch-depth: 1
       - name: mysql version
-        run: mysql --host=127.0.0.1 --port=3306 -e "SELECT @@VERSION"
+        env:
+          PORT: ${{ job.services.mysql.ports[3306] }}
+        run: |
+          while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" --silent; do
+            sleep 1
+          done
