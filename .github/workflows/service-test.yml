@@ -10,13 +10,10 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_USER: myUser
-          MYSQL_PASSWORD: myPass
-          MYSQL_DATABASE: myDB
-          MYSQL_ROOT_PASSWORD: myPass
+          MYSQL_ROOT_PASSWORD: root
         ports:
-          - 3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+        - 3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=10
 
     steps:
       - name: Checkout
@@ -24,7 +21,5 @@ jobs:
         with:
           fetch-depth: 1
       - name: mysql version
-        env:
-          PORT: ${{ job.services.mysql.ports[3306] }}
-        run: ping 127.0.0.1
+        run: mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uroot -ppassword -e "SELECT @@VERSION"
 
