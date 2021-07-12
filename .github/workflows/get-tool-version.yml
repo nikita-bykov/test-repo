@@ -1,4 +1,4 @@
-name: Service_test
+name: Get_tool_version
 on:
   workflow_dispatch:
 
