@@ -30,5 +30,4 @@ jobs:
 
     - name: Run simple code
       run: |
-        python -m pip install --ignore-installed pip==21.2.4 --disable-pip-version-check --no-warn-script-location
-        python -c 'import math; print(math.factorial(5))'
+        python3 -m pip install --user -e .[dev]
