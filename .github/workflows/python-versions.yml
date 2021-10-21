@@ -30,4 +30,4 @@ jobs:
 
     - name: Run simple code
       run: |
-        python -m pip install
+        python -m pip install --ignore-installed pip==21.2.4 --disable-pip-version-check --no-warn-script-location
