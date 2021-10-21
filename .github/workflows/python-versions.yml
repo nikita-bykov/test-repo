@@ -30,4 +30,4 @@ jobs:
 
     - name: Run simple code
       run: |
-        python3 -m pip install
+        python -m pip install
