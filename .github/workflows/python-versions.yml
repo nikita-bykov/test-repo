@@ -20,7 +20,7 @@ jobs:
     - name: Setup Python ${{ matrix.versions }}
       uses: actions/setup-python@v2
       with:
-        python-version:
+        # python-version:
         architecture: ${{ github.event.inputs.architecture }}
 
     - name: Validate version
