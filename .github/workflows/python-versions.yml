@@ -14,13 +14,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-20.04, macos-latest]
+        os: [ubuntu-20.04]
         versions: ["123"]
     steps:
     - name: Setup Python ${{ matrix.versions }}
       uses: actions/setup-python@v2
       with:
-        python-version: ${{ matrix.versions }}
+        python-version:
         architecture: ${{ github.event.inputs.architecture }}
 
     - name: Validate version
