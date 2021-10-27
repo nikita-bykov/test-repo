@@ -14,13 +14,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-10.15]
-        versions: ["123"]
+        os: [macos-latest, windows-latest, ubuntu-latest]
+        versions: '3.8'
     steps:
     - name: Setup Python ${{ matrix.versions }}
-      uses: actions/setup-python@v2
+      uses: nikita-bykov/setup-python@test-branch
       with:
-        python-version: 'pypy3'
+        python-version: ${{ matrix.versions }}
         architecture: ${{ github.event.inputs.architecture }}
 
     - name: Validate version
