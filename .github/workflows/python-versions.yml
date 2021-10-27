@@ -30,4 +30,5 @@ jobs:
 
     - name: Run simple code
       run: |
-        printenv
+        Write Host $env:pythonLocation
+      shell: pwsh
