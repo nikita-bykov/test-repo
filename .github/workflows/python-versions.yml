@@ -14,8 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest]
-        versions: ['3.8']
+        os: [ubuntu-latest]
+        versions: ['3.8', 'pypy-3.7']
     steps:
     - name: Setup Python ${{ matrix.versions }}
       uses: nikita-bykov/setup-python@test-branch
