@@ -14,8 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        versions: ['3.8', 'pypy-3.7']
+        os: [windows-latest]
+        versions: ['pypy-3.6']
     steps:
     - name: Setup Python ${{ matrix.versions }}
       uses: nikita-bykov/setup-python@test-branch
@@ -28,10 +28,10 @@ jobs:
         python --version
       shell: pwsh
 
-    # - name: Run simple code
-    #   run: |
-    #     Write Host $env:pythonLocation
-    #   shell: pwsh
     - name: Run simple code
       run: |
-        echo $pythonLocation
+        Write Host $env:pythonLocation
+      shell: pwsh
+    # - name: Run simple code
+    #   run: |
+    #     echo $pythonLocation
