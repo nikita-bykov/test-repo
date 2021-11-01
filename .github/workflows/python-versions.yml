@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-10.15]
-        versions: ['pypy2', 'pypy3']
+        versions: ['pypy2', 'pypy3', '3.6', '2.7']
     steps:
     - name: Setup Python ${{ matrix.versions }}
       uses: nikita-bykov/setup-python@test-branch
@@ -28,10 +28,10 @@ jobs:
         python --version
       shell: pwsh
 
-    - name: Run simple code
-      run: |
-        Write Host $env:PATH
-      shell: powershell
     # - name: Run simple code
     #   run: |
-    #     echo $pythonLocation
+    #     Write Host $env:PATH
+    #   shell: powershell
+    - name: Run simple code
+      run: |
+        echo $pythonLocation
