@@ -9,18 +9,18 @@ on:
 
 jobs:
   test-python:
-    name: Test Python ${{ matrix.python-version }} ${{ matrix.os }}
+    name: Test Python ${{ matrix.python }} ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [macos-latest, windows-latest]
-        python-version: ['pypy2', 'pypy3', '3.6', '2.7', '3.9']
+        python: ['pypy2', 'pypy3', '3.6', '2.7', '3.9']
     steps:
-    - name: Setup Python ${{ matrix.python-version }}
+    - name: Setup Python ${{ matrix.python }}
       uses: nikita-bykov/setup-python@test-branch
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: ${{ matrix.python }}
         architecture: ${{ github.event.inputs.architecture }}
 
     - name: Validate version
