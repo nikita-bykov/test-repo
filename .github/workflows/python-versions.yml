@@ -14,8 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest]
-        python: ['3.6', '2.7', '3.9']
+        os: [windows-latest]
+        python: ['3.6', '3.9.7', '3.9.9', '3.9']
     steps:
     - name: Setup Python ${{ matrix.python }}
       uses: nikita-bykov/setup-python@test-branch
