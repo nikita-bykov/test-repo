@@ -14,8 +14,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        python: ['3.10', '3.9.7', '3.9.9', '3.9']
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        python: ['3.6', '3.7', '3.8', '3.9', '3.10', '3.9.7', '3.9.9']
     steps:
     - name: Setup Python ${{ matrix.python }}
       uses: nikita-bykov/setup-python@test-branch
@@ -27,14 +27,12 @@ jobs:
       run: |
         python --version
 
-    - name: Validate version with sudo
-      run: |
-        sudo python --version
-
     # - name: Run simple code
     #   run: |
     #     Write Host $env:PATH
     #   shell: powershell
     - name: Run simple code
       run: |
-        python -c "from pathlib import Path; (Path.cwd() / ('a'*131) / ('a'*131)).mkdir(parents=True)"
+        python -m pip install --upgrade pip wheel
+        pip install flake8 pytest
+        pip install shap
