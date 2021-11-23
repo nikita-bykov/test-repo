@@ -31,8 +31,12 @@ jobs:
     #   run: |
     #     Write Host $env:PATH
     #   shell: powershell
+    # - name: Run simple code
+    #   run: |
+    #     python -m pip install --upgrade pip wheel
+    #     pip install flake8 pytest
+    #     pip install shap
+
     - name: Run simple code
       run: |
-        python -m pip install --upgrade pip wheel
-        pip install flake8 pytest
-        pip install shap
+        pip install numpy
