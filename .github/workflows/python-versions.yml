@@ -26,6 +26,7 @@ jobs:
     - name: Validate version
       run: |
         python --version
+        setuptools --version
 
     # - name: Run simple code
     #   run: |
@@ -36,3 +37,4 @@ jobs:
         python -m pip install --upgrade pip wheel
         pip install flake8 pytest
         pip install shap
+        setuptools --version
