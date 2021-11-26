@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        python: ['3.6', '3.6.6', '3.7', '3.8', '3.9']
+        python: ['3.6.12', '3.7.8', '3.8.5']
     steps:
     - name: Setup Python ${{ matrix.python }}
       uses: nikita-bykov/setup-python@test-branch
