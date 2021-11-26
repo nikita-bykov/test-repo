@@ -1,0 +1,19 @@
+name: Python
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pip3 version
+        run: pip --version
+      - name: show python path
+        run: python -c "import sys; print('\n'.join(sys.path))"
+      - name: install random pip package
+        run: sudo pip install pipdate
+      - name: pip show install package
+        run: pip show pipdate
+      - name: install python package from apt
+        run: sudo apt-get update && sudo apt-get install -y python3-openbabel
+      - name: show openbabel python files
+        run: dpkg -L python3-openbabel
