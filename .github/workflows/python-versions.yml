@@ -15,12 +15,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        python: ['3.6.12', '3.7.8', '3.8.5', '3.6.7', '3.7.3']
+        python: ['3.9']
     steps:
     - name: Setup Python 3.9
       uses: actions/setup-python@v2.3.1
       with:
-        python-version: '3.9'
+        python-version: ${{ matrix.python }}
         architecture: ${{ github.event.inputs.architecture }}
         cache: 'pip'
 
