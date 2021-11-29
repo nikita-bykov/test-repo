@@ -18,6 +18,8 @@ jobs:
         python: ['3.9']
     steps:
     - uses: actions/checkout@v2
+    - name: Install pipenv
+      run: pipx install pipenv
     - name: Setup Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -29,7 +31,7 @@ jobs:
       run: |
         python --version
 
-    - run: pip install -r requirements.txt
+    - run: pipenv install
     # - name: Run simple code
     #   run: |
     #     Write Host $env:PATH
