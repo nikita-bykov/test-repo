@@ -25,7 +25,7 @@ jobs:
       with:
         python-version: ${{ matrix.python }}
         architecture: ${{ github.event.inputs.architecture }}
-        cache: 'pip'
+        cache: 'pipenv'
 
     - name: Validate version
       run: |
