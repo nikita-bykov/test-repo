@@ -18,6 +18,10 @@ jobs:
         python: ['3.9']
     steps:
     - uses: actions/checkout@v2
+    - name: Validate version
+      run: |
+        python --version
+
     - name: Setup Python 3.9
       uses: actions/setup-python@v2
       with:
@@ -25,25 +29,4 @@ jobs:
         architecture: ${{ github.event.inputs.architecture }}
         cache: 'pip'
 
-    - name: Packages by default
-      run: |
-        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-        python get-pip.py pip==21.0.1
-        pip freeze
-
-    - name: Packages by default with sudo
-      run: |
-        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-        sudo python get-pip.py pip==21.0.1
-        sudo pip freeze
-
-    - name: Validate version
-      run: |
-        python --version
-        echo $PATH
-
-    - name: Validate sudo version
-      run: |
-        sudo python --version
-        sudo echo $PATH
 
