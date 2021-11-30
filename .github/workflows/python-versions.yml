@@ -32,6 +32,12 @@ jobs:
         python get-pip.py pip==21.0.1
         pip freeze
 
+    - name: Packages by default with sudo
+      run: |
+        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+        sudo python get-pip.py pip==21.0.1
+        sudo pip freeze
+
     - name: Validate version
       run: |
         python --version
