@@ -19,7 +19,6 @@ jobs:
 
       - name: Packages by default
         run: |
-          sudo env "PATH=$PATH" python get-pip.py pip==21.0.1
           curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
           python get-pip.py pip==21.0.1
           pip freeze
@@ -38,5 +37,5 @@ jobs:
           python -V
           echo 'echo $PATH' | sudo sh
           curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-          sudo python get-pip.py pip==21.0.1
+          sudo env "PATH=$PATH" python get-pip.py pip==21.0.1
           sudo pip freeze
