@@ -1,5 +1,6 @@
 name: Test Python version
 on: 
+  push:
   workflow_dispatch:
     inputs:
       architecture:
@@ -24,6 +25,12 @@ jobs:
         python-version: ${{ matrix.python }}
         architecture: ${{ github.event.inputs.architecture }}
         cache: 'pip'
+
+    - name: Packages by default
+      run: |
+        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+        python get-pip.py pip==21.0.1
+        pip freeze
 
     - name: Validate version
       run: |
