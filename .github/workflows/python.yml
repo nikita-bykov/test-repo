@@ -1,19 +1,40 @@
 name: Python
 on:
   workflow_dispatch:
+  push:
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  python_utils_tests_page_0:
+    runs-on: ubuntu-18.04
     steps:
-      - name: pip3 version
-        run: pip --version
-      - name: show python path
-        run: python -c "import sys; print('\n'.join(sys.path))"
-      - name: install random pip package
-        run: sudo pip install pipdate
-      - name: pip show install package
-        run: pip show pipdate
-      - name: install python package from apt
-        run: sudo apt-get update && sudo apt-get install -y python3-openbabel
-      - name: show openbabel python files
-        run: dpkg -L python3-openbabel
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+
+      - uses: actions/cache@v2
+        id: cache
+        with:
+          path: ${{ env.pythonLocation }}
+          key: pip-${{ env.pythonLocation }}-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('**/requirements_dev.txt') }}
+          restore-keys: pip-${{ env.pythonLocation }}
+
+      - name: Packages by default
+        run: |
+          curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+          python get-pip.py pip==21.0.1
+          pip freeze
+
+      - name: Install apt dependencies
+        run: |
+          echo "PYTHONPATH=/usr/lib/python3/dist-packages" >> $GITHUB_ENV
+          sudo apt-get update
+          sudo apt-get install gdal-bin
+          sudo apt-get install build-essential python3-cffi libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info
+          sudo apt-get install libmapnik3.0 libmapnik-dev python3-mapnik
+
+      - name: After installing apt dependencies
+        run: |
+          python -V
+          curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+          sudo python get-pip.py pip==21.0.1
+          sudo pip freeze
