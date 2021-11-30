@@ -2,23 +2,18 @@ name: Python
 on:
   workflow_dispatch:
 jobs:
-  test:
-
-    runs-on: ubuntu-18.04
-    strategy:
-      matrix:
-        python-version: [3.6, 3.7]
-
+  build:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-
-    - name: List existing install
-      run: pip freeze
-    - name: Install Conflicting PyYAML
-      run: pip install -U pip && pip install PyYAML==5.1.0
-    - name: Do something else
-      run: echo "True"
+      - name: pip3 version
+        run: pip --version
+      - name: show python path
+        run: python -c "import sys; print('\n'.join(sys.path))"
+      - name: install random pip package
+        run: sudo pip install pipdate
+      - name: pip show install package
+        run: pip show pipdate
+      - name: install python package from apt
+        run: sudo apt-get update && sudo apt-get install -y python3-openbabel
+      - name: show openbabel python files
+        run: dpkg -L python3-openbabel
