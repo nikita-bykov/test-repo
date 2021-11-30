@@ -14,30 +14,24 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, macos-latest, windows-latest]
+        os: [ubuntu-latest]
         python: ['3.9']
     steps:
     - uses: actions/checkout@v2
-    - name: Install pipenv
-      run: pipx install pipenv
     - name: Setup Python 3.9
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python }}
         architecture: ${{ github.event.inputs.architecture }}
-        cache: 'pipenv'
+        cache: 'pip'
 
     - name: Validate version
       run: |
         python --version
+        echo $PATH
 
-    - run: pipenv install
-    # - name: Run simple code
-    #   run: |
-    #     Write Host $env:PATH
-    #   shell: powershell
-    # - name: Run simple code
-    #   run: |
-    #     python -m pip install --upgrade pip wheel
-    #     pip install flake8 pytest
-    #     pip install shap
+    - name: Validate sudo version
+      run: |
+        sudo python --version
+        sudo echo $PATH
+
