@@ -35,8 +35,7 @@ jobs:
         run: |
           echo $PATH
           python -V
-          sudo sh
-          echo $PATH
+          echo 'echo $PATH' | sudo sh
           curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
           sudo python get-pip.py pip==21.0.1
           sudo pip freeze
