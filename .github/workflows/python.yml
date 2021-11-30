@@ -1,7 +1,6 @@
 name: Python
 on:
   workflow_dispatch:
-  push:
 jobs:
   python_utils_tests_page_0:
     runs-on: ubuntu-18.04
@@ -34,6 +33,7 @@ jobs:
 
       - name: After installing apt dependencies
         run: |
+          sudo env "PATH=$PATH" python get-pip.py pip==21.0.1
           python -V
           curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
           sudo python get-pip.py pip==21.0.1
