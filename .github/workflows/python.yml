@@ -11,7 +11,9 @@ jobs:
           python-version: '3.8.12'
 
       - name: pip3 version
-        run: pip --version
+        run: | 
+            pip --version
+            printenv
 
       - name: show python path
         run: python -c "import sys; print('\n'.join(sys.path))"
