@@ -23,7 +23,7 @@ jobs:
         run: sudo pip show pipdate
 
       - name: install python package from apt
-        run: pip install openbabel
+        run: sudo apt-get update && sudo apt-get install -y python3-openbabel
 
       - name: show openbabel python files
         run: dpkg -L python3-openbabel
