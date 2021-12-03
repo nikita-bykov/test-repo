@@ -28,6 +28,6 @@ jobs:
 
     - name: Validate version
       run: |
-         $env:pythonLocation\lib\python* | Resolve-Path
+        $env:pythonLocation\lib\python* | Resolve-Path
       shell: pwsh
 
