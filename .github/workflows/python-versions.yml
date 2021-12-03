@@ -28,5 +28,6 @@ jobs:
 
     - name: Validate version
       run: |
-        ls -la $pythonLocation/lib/python*
+        cd $pythonLocation/lib/python*
+        pwd
 
