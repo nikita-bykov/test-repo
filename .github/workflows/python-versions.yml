@@ -28,6 +28,6 @@ jobs:
 
     - name: Validate version
       run: |
-        cd $pythonLocation/lib/python*
-        pwd
+        tempVar=$(pwd $pythonLocation/lib/python*) 
+        echo $tempVar
 
