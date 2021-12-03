@@ -28,5 +28,5 @@ jobs:
 
     - name: Validate version
       run: |
-        ls -la $pythonLocation/lib
+        ls -la $pythonLocation/lib/python*
 
