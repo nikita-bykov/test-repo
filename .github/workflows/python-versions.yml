@@ -28,6 +28,6 @@ jobs:
 
     - name: Validate version
       run: |
-        tempVar=$(pwd $pythonLocation/lib/python*) 
-        echo $tempVar
+        $env:pythonLocation\lib\python* | Resolve-Path
+      shell: pwsh
 
