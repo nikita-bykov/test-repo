@@ -2,15 +2,21 @@ name: Python
 on:
   workflow_dispatch:
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  windows:
+    name: ${{ matrix.python }} / ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [Windows]
+        python:
+          - 3.7
+          - 3.8
+          - 3.9
+          - "3.10"
+
+    runs-on: ${{ matrix.os }}-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v2
+      - uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
-      - name: Install dependencies
-        run: |
-          pip install --upgrade pip poetry
-          poetry install
+          python-version: ${{ matrix.python }}
+
+      - run: python -c "from pathlib import Path; (Path.cwd() / ('a'*131) / ('a'*131)).mkdir(parents=True)"
