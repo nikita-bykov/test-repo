@@ -9,18 +9,14 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest]
-        python: ['3.10', '3.9.7', '3.9.9', '3.9']
+        python: ['3.7', '3.8', '3.9', '3.10', '3.9.7', '3.9.9']
     steps:
+    - uses: actions/checkout@v2
     - name: Setup Python ${{ matrix.python }}
-      uses: nikita-bykov/setup-python@test-branch
+      uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python }}
         architecture: ${{ github.event.inputs.architecture }}
-
-    - name: Validate version
-      run: |
-        python --version
-      shell: pwsh
 
     - name: Run simple code
       run: |
