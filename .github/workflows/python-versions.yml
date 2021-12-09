@@ -28,7 +28,5 @@ jobs:
 
     - name: Validate version
       run: |
-        $var = $("$env:pythonLocation\lib\python*" | Resolve-Path)
-        Write-Host $var
-      shell: pwsh
+        echo $LD_LIBRARY_PATH
 
