@@ -26,7 +26,7 @@ jobs:
         architecture: ${{ github.event.inputs.architecture }}
         cache: 'pip'
 
-    - name: Validate version
+    - name: Test
       run: |
-        echo $LD_LIBRARY_PATH
+        git clone https://github.com/nikita-bykov/despasito.git
 
