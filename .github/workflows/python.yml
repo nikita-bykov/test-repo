@@ -2,23 +2,31 @@ name: Python
 on:
   workflow_dispatch:
 jobs:
-  test-python:
-    name: Test Python ${{ matrix.python }} ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [windows-latest]
-        python: ['3.7', '3.8', '3.9', '3.10', '3.9.8']
+  build_linux:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Setup Python ${{ matrix.python }}
+    - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: ${{ matrix.python }}
-        architecture: ${{ github.event.inputs.architecture }}
-
-    - name: Run simple code
+        python-version: '3.x'
+    - uses: ./.github/workflows/actions/build-manylinux/
+    - name: Upload Wheels
+      uses: actions/upload-artifact@v1
+      with: 
+        name: manylinux1-wheels
+        path: manylinux1-wheels
+    - name: Publish to PyPI if tagged
+      if: startsWith(github.ref, 'refs/tags')
+      env:
+        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        python -c "from pathlib import Path; (Path.cwd() / ('a'*131) / ('a'*131)).mkdir(parents=True)"
+        python --version
+        pip --version
+        python -m pip install --upgrade pip
+        pip install twine setuptools-scm
+        python setup.py sdist
+        twine upload manylinux1-wheels/fugashi*whl
+        twine upload manylinux1-wheels/fugashi*.tar.gz
 
