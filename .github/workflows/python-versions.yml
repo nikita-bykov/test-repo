@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [macos-latest]
-        python: ['pypy-3.6']
+        python: ['pypy-3.7']
     steps:
     - uses: actions/checkout@v2
 
