@@ -1,11 +1,6 @@
 name: Test Python version
 on: 
   workflow_dispatch:
-    inputs:
-      architecture:
-        description: 'The target architecture (x86, x64) of the Python'
-        required: false
-        default: 'x64'
 
 jobs:
   test-python:
@@ -14,8 +9,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        python: ['3.6', '3.7', '3.8', '3.9', '3.10']
+        os: [macos-latest]
+        python: ['pypy-3.6']
     steps:
     - uses: actions/checkout@v2
 
@@ -23,10 +18,4 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python }}
-        architecture: ${{ github.event.inputs.architecture }}
         cache: 'pip'
-
-    - name: Test
-      run: |
-        git clone https://github.com/nikita-bykov/despasito.git
-
