@@ -9,8 +9,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-latest]
-        python: ['pypy2']
+        os: [ubuntu-latest]
+        python: ['pypy3']
     steps:
     - uses: actions/checkout@v2
 
