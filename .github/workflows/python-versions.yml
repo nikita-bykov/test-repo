@@ -10,7 +10,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python: ['pypy-x']
+        python: ['3.10.1']
     steps:
     - uses: actions/checkout@v2
 
