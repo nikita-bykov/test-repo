@@ -9,8 +9,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        python: ['3.10.1']
+        os: [ubuntu-latest]
+        python: ['3.9']
     steps:
     - uses: actions/checkout@v2
 
@@ -19,3 +19,7 @@ jobs:
       with:
         python-version: ${{ matrix.python }}
         cache: 'pip'
+
+    - name: which python
+      run: |
+        which python
