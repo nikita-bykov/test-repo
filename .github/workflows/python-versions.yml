@@ -21,4 +21,4 @@ jobs:
         cache: 'pip'
 
     - name: which
-      run: echo `which python`
+      run: which python
