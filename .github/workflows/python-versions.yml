@@ -9,8 +9,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest]
-        python: ['3.9']
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        python: ['3.11.0-alpha.3']
     steps:
     - uses: actions/checkout@v2
 
@@ -19,8 +19,3 @@ jobs:
       with:
         python-version: ${{ matrix.python }}
         cache: 'pip'
-
-    - name: which python
-      run: |
-        which python
-        ls -la /opt/hostedtoolcache/Python/3.9.9/x64/bin
