@@ -10,15 +10,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        python: ['3.10.1']
+        python: ['pypy-3.6']
     steps:
     - uses: actions/checkout@v2
 
     - name: Setup Python ${{ matrix.python }}
       uses: actions/setup-python@v2
       with:
-        python-version: 'pypy-3.6'
+        python-version: ${{ matrix.python }}
         cache: 'pip'
-
-    - name: which
-      run: which python
