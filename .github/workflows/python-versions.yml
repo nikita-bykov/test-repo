@@ -10,12 +10,12 @@ jobs:
       fail-fast: false
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        python: ['2.7.18']
+        python: ['2.7']
     steps:
     - uses: actions/checkout@v2
 
     - name: Setup Python ${{ matrix.python }}
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python }}
         # cache: 'pip'
