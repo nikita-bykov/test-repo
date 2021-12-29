@@ -8,14 +8,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        # in this example, there is a newer version already installed, 3.7.7, so the older version will be downloaded
-        python-version: ['3.7.4', '3.8', '3.9', '3.10']
+        python-version:
+        - 'pypy-3.7' # the latest available version of PyPy that supports Python 3.7
+        - 'pypy-3.7-v7.3.3' # Python 3.7 and PyPy 7.3.3
+        - 'pypy-3.8' # the latest available version of PyPy that supports Python 3.8
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
-        python-version: '3.11.0-alpha - 3.11.0' # SemVer's version range syntax
-    - run: python my_script.py
+        python-version: ${{ matrix.python-version }}
 
 
 
