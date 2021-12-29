@@ -9,13 +9,15 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos-10.15, macos-latest]
+        os: [macos-latest, ubuntu-latest, windows-latest]
         python: ['3.10']
     steps:
     - uses: actions/checkout@v2
 
     - name: Setup Python ${{ matrix.python }}
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python }}
         # cache: 'pip'
+    - name: pythonLocation
+      run: echo $pythonLocation
