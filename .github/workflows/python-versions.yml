@@ -6,17 +6,11 @@ jobs:
   test-python:
     name: Test Python ${{ matrix.python }} ${{ matrix.os }}
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version:
-        - 'pypy-3.7' # the latest available version of PyPy that supports Python 3.7
-        - 'pypy-3.7-v7.3.3' # Python 3.7 and PyPy 7.3.3
-        - 'pypy-3.8' # the latest available version of PyPy that supports Python 3.8
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-python@v2
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: '3.11.0-alpha - 3.11.0' # SemVer's version range syntax
 
 
 
