@@ -4,14 +4,21 @@ on:
 
 jobs:
   test-python:
-    name: Test Python ${{ matrix.python }} ${{ matrix.os }}
-    runs-on: ubuntu-latest
+    name: Test Python
+    runs-on: windows-latest
     strategy:
       matrix:
         # in this example, there is a newer version already installed, 3.7.7, so the older version will be downloaded
         python-version: ['3.5', '3.6', '3.7.4', '3.8']
     steps:
     - uses: actions/checkout@v2
+      name: Checkout source
     - uses: actions/setup-python@v2
-      with:
-        python-version: '3.11.0-alpha - 3.11.0'
+      name: Install Python
+    - name: Install dependencies
+      run: |
+        pip3 install virtualenv
+        python3 -m venv C:\temp\venv
+        dir C:\temp\venv\Scripts
+        C:\temp\venv\Scripts\activate.bat
+        pip3 install matplotlib scons
