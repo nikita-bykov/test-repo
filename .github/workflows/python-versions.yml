@@ -15,8 +15,8 @@ jobs:
       name: Install Python
     - name: Install dependencies
       run: |
-        pip install virtualenv
-        python -m venv C:\temp\venv
+        pip3 install virtualenv
+        python3 -m venv C:\temp\venv
         ls "C:\temp\venv\Scripts"
         C:\temp\venv\Scripts\activate.bat
         pip3 install matplotlib scons
