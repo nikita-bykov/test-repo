@@ -14,8 +14,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip3 install virtualenv
-        python3 -m venv C:\temp\venv
-        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+        virtualenv C:\temp\venv
         Get-ChildItem "C:\temp\venv"
         Get-ChildItem "C:\temp\venv\Scripts"
         C:\temp\venv\Scripts\activate.bat
