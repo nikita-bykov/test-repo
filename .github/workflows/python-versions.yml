@@ -18,7 +18,6 @@ jobs:
     # - run: pip list
     - name: Install dependencies
       run: |
-        # pip3 install virtualenv
-        python3 -m venv C:\temp\venv
-        ls "C:\temp\venv\Scripts"
-        C:\temp\venv\Scripts\activate.bat
+        mkdir C:\temp\python-virtual-environments && cd C:\temp\python-virtual-environments
+        python3 -m venv env
+        ls ".\Scripts"
