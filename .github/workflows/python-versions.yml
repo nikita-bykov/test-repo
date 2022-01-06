@@ -18,3 +18,4 @@ jobs:
         dir C:\temp\venv\Scripts
         C:\temp\venv\Scripts\activate.bat
         pip3 install matplotlib scons
+      shell: pwsh
