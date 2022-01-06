@@ -13,8 +13,10 @@ jobs:
       with:
           python-version: "3.9"
       name: Install Python
-    - run: which python3
-    - run: which python
+    - run: |
+        pip3 install virtualenv
+        ls -l `which pip3`
+    - run: ls -l `which pip`
     # - name: Install dependencies
     #   run: |
     #     pip3 install virtualenv
