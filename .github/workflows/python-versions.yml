@@ -20,4 +20,4 @@ jobs:
       run: |
         mkdir C:\temp\python-virtual-environments && cd C:\temp\python-virtual-environments
         python3 -m venv env
-        ls ".\Scripts"
+        ls ".\env\Scripts"
