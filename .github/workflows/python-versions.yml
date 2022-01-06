@@ -19,5 +19,6 @@ jobs:
     - name: Install dependencies
       run: |
         mkdir C:\temp\python-virtual-environments && cd C:\temp\python-virtual-environments
+        pip3 install virtualenv
         python3 -m venv env
         ls ".\env\Scripts"
