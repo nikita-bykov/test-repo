@@ -13,7 +13,7 @@ jobs:
       with:
           python-version: "3.9"
       name: Install Python
-    - run: pip3 install virtualenv
+    - run: pip install virtualenv
     - run: pip3 list
     - run: pip list
     # - name: Install dependencies
