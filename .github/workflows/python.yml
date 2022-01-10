@@ -19,4 +19,4 @@ jobs:
         python-version: '3.9'
     - name: where python
       run: |
-        echo "$PATH"
+        printenv
