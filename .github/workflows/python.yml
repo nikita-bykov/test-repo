@@ -9,14 +9,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       name: Checkout source
-    - name: Path
-      run: Write-Host $env:PATH
-      shell: pwsh
+    - name: where python
+      run: |
+        where python
+        where python3
     - name: Set up Python 
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
-    - name: Install dependencies
+    - name: where python
       run: |
-        Write-Host $env:PATH
-      shell: pwsh
+        where python
+        where python3
