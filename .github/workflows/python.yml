@@ -19,6 +19,6 @@ jobs:
         python-version: '3.9'
     - name: where python
       run: |
-        ls "/c/hostedtoolcache/windows/Python/3.9.9/x64/python"
+        ls "C:\hostedtoolcache\windows\Python\3.9.9\x64\python"
         echo "----------------"
-        ls "/c/hostedtoolcache/windows/Python/3.9.9/x64/python3"
+        ls "C:\hostedtoolcache\windows\Python\3.9.9\x64\python3"
