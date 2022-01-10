@@ -9,10 +9,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       name: Checkout source
+    - name: python version
+      run: python --version
     - name: Set up Python 
       uses: actions/setup-python@v2
       with:
-        python-version: '3.10'
+        python-version: '3.9'
     - name: Install dependencies
       run: |
-        ls "C:/hostedtoolcache/windows/Python"
+        python --version
