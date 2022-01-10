@@ -5,7 +5,7 @@ on:
 jobs:
   test-python:
     name: Test Python
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       name: Checkout source
@@ -19,5 +19,4 @@ jobs:
         python-version: '3.9'
     - name: where python
       run: |
-        Write-Host "$env:PATH"
-      shell: pwsh
+        echo "$PATH"
