@@ -19,5 +19,5 @@ jobs:
         python-version: '3.9'
     - name: where python
       run: |
-        which python-config
-        which python3-config
+        Write-Host "$env:PATH"
+      shell: pwsh
