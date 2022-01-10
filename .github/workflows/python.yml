@@ -11,13 +11,13 @@ jobs:
       name: Checkout source
     - name: where python
       run: |
-        where python
-        where python3
+        which python
+        which python3
     - name: Set up Python 
       uses: actions/setup-python@v2
       with:
         python-version: '3.9'
     - name: where python
       run: |
-        where python
-        where python3
+        which python
+        which python3
