@@ -21,4 +21,3 @@ jobs:
       run: |
         which python-config
         which python3-config
-      shell: pwsh
