@@ -23,6 +23,6 @@ jobs:
         python-version: '3.9'
     - name: where python
       run: |
-        Get-ChildItem -Path HKCU:\Software\Python
+        Get-ChildItem -Path HKCU:\
         Get-ChildItem -Path HKCU:\Software\Python\PythonCore
       shell: pwsh
