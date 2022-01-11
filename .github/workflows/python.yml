@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [windows-latest]
     steps:
     - uses: actions/checkout@v2
       name: Checkout source
@@ -23,4 +23,4 @@ jobs:
         python-version: '3.9'
     - name: where python
       run: |
-        ls -la "/opt/hostedtoolcache/Python/3.9.9/x64/bin/python3.9"
+        ls -la "/c/hostedtoolcache/windows/Python/3.9.9/x64"
