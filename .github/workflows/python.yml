@@ -23,5 +23,5 @@ jobs:
         python-version: '3.9'
     - name: where python
       run: |
-        whitch python
-        whitch python3
+        which python
+        which python3
