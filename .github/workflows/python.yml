@@ -23,4 +23,5 @@ jobs:
         python-version: '3.9'
     - name: where python
       run: |
-        ls -la "/c/hostedtoolcache/windows/Python/3.9.9/x64"
+        Get-ChildItem "C:\hostedtoolcache\windows\Python\3.9.9\x64"
+      shell: pwsh
