@@ -1,5 +1,6 @@
 name: Test setup-python
-on: 
+on:
+  push:
   workflow_dispatch:
 
 jobs:
