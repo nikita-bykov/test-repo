@@ -22,6 +22,5 @@ jobs:
       with:
         python-version: '3.9'
     - name: where python
-      run: |
-        python --version
-        python3 --version
+      run: Get_ChildItem "HKEY_CURRENT_USER\SOFTWARE\Python\PythonCore\"
+      shell: pwsh
