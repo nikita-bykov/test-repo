@@ -5,7 +5,10 @@ on:
 jobs:
   test-python:
     name: Test Python
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, macos-latest, ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
       name: Checkout source
@@ -19,5 +22,5 @@ jobs:
         python-version: '3.9'
     - name: where python
       run: |
-        dir env:
-      shell: pwsh
+        where python
+        where python3
