@@ -15,8 +15,8 @@ jobs:
         python-version: '3.10'
     - name: Install dependencies
       run: |
-        pip3 install virtualenv
-        python3 -m venv C:\temp\venv
+        pip install virtualenv
+        python -m venv C:\temp\venv
         dir C:\temp\venv\Scripts
         C:\temp\venv\Scripts\activate.bat
-        pip3 install matplotlib scons
+        pip install matplotlib scons
