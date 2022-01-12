@@ -17,5 +17,4 @@ jobs:
       run: |
         which pip
         which pip3
-#        Get-ChildItem C:\hostedtoolcache\windows\Python
-#        Get-ChildItem C:\hostedtoolcache\windows\Python\3.7.9\x64\
+        Get-ChildItem C:\hostedtoolcache\windows\Python\3.7.9\x64\Scripts
