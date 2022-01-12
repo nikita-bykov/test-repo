@@ -9,14 +9,14 @@ jobs:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
+#     - name: Set up Python 
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: '3.10'
     - name: Install dependencies
       run: |
-        pip install virtualenv
-        python -m venv C:\temp\venv
+        pip3 install virtualenv
+        python3 -m venv C:\temp\venv
         dir C:\temp\venv\Scripts
         C:\temp\venv\Scripts\activate.bat
-        pip install matplotlib scons
+        pip3 install matplotlib scons
