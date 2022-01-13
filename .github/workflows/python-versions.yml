@@ -16,6 +16,6 @@ jobs:
     - name: Install dependencies
       run: |
         ls /Users/runner/hostedtoolcache
-#        python3 -m venv C:\temp\venv
+        python3 -m venv /Users/runner/hostedtoolcache/venv
 #        dir C:\temp\venv\Scripts
 #        C:\temp\venv\Scripts\activate.bat
