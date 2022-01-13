@@ -6,7 +6,7 @@ on:
 jobs:
   test-python:
     name: Test Python
-    runs-on: windows-latest
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
@@ -15,7 +15,7 @@ jobs:
         python-version: '3.10'
     - name: Install dependencies
       run: |
-        python3 -m venv C:\temp\venv
-        dir C:\temp\venv\Scripts
-        C:\temp\venv\Scripts\activate.bat
-        pip3 install matplotlib scons
+        ls /Users/runner/hostedtoolcache
+#        python3 -m venv C:\temp\venv
+#        dir C:\temp\venv\Scripts
+#        C:\temp\venv\Scripts\activate.bat
