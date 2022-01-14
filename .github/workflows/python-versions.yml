@@ -18,5 +18,6 @@ jobs:
         ls /Users/runner/hostedtoolcache
         python3 -m venv /Users/runner/hostedtoolcache/venv
         ls /Users/runner/hostedtoolcache/venv/bin
+        /Users/runner/hostedtoolcache/venv/bin/activate
 #        dir C:\temp\venv\Scripts
 #        C:\temp\venv\Scripts\activate.bat
