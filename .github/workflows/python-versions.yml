@@ -6,13 +6,16 @@ on:
 jobs:
   test-python:
     name: Test Python
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: ['pypy-3.6-v7.3.0']
+        version: ['3.9']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.version }}
+    - name: test
+      run: |
+        ls -a /opt/hostedtoolcache/Python
