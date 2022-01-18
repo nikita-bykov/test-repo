@@ -18,4 +18,4 @@ jobs:
         python-version: ${{ matrix.version }}
     - name: test
       run: |
-        ls -a /opt/hostedtoolcache/Python
+        ls -a /opt/hostedtoolcache/Python/3.9.9/x64
