@@ -9,7 +9,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        version: ['pypy-3.7-v7.3.4']
+        version: ['pypy-3.6-v7.3.2', 'pypy-3.7-v7.3.2']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
