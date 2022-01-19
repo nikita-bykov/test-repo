@@ -18,6 +18,5 @@ jobs:
         python-version: ${{ matrix.version }}
     - name: test
       run: |
-        echo "/opt/hostedtoolcache/Python/3.9.10/x64/lib"
-        ls -a /opt/hostedtoolcache/Python/3.9.10/x64/lib/pkgconfig
+        which pkg-config
 
