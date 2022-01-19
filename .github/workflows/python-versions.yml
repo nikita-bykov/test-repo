@@ -18,13 +18,6 @@ jobs:
         python-version: ${{ matrix.version }}
     - name: test
       run: |
-        echo "/opt/hostedtoolcache/Python/3.9.10/x64/bin"
-        ls -a /opt/hostedtoolcache/Python/3.9.10/x64/bin
-        echo "/opt/hostedtoolcache/Python/3.9.10/x64/include"
-        ls -a /opt/hostedtoolcache/Python/3.9.10/x64/include
         echo "/opt/hostedtoolcache/Python/3.9.10/x64/lib"
-        ls -a /opt/hostedtoolcache/Python/3.9.10/x64/lib
-        echo "/opt/hostedtoolcache/Python/3.9.10/x64/python"
-        ls -a /opt/hostedtoolcache/Python/3.9.10/x64/python
-        echo "/opt/hostedtoolcache/Python/3.9.10/x64/share"
-        ls -a /opt/hostedtoolcache/Python/3.9.10/x64/share
+        ls -a /opt/hostedtoolcache/Python/3.9.10/x64/lib/pkgconfig
+
