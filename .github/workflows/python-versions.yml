@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        version: ['3.7']
+        version: ['3.9']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
@@ -18,6 +18,5 @@ jobs:
         python-version: ${{ matrix.version }}
     - name: test
       run: |
-        tree /usr/local/lib
- #       pkg-config python-3.7-embed --libs --cflags
+        pkg-config python-3.9-embed --libs --cflags
  #       pkg-config python-3.7 --libs
