@@ -18,5 +18,5 @@ jobs:
         python-version: ${{ matrix.version }}
     - name: test
       run: |
-        pkg-config python-3.8-embed --libs --cflags
+        pkg-config python-3.7-embed --libs --cflags
  #       pkg-config python-3.7 --libs
