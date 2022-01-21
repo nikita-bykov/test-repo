@@ -6,7 +6,7 @@ on:
 jobs:
   test-python:
     name: Test Python
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         version: ['3.7']
