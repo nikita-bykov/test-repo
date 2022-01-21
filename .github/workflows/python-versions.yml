@@ -18,5 +18,4 @@ jobs:
         python-version: ${{ matrix.version }}
     - name: test
       run: |
-        which pkg-config
-        echo $PKG_CONFIG_PATH
+        ls /usr/lib
