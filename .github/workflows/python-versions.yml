@@ -18,5 +18,5 @@ jobs:
         python-version: ${{ matrix.version }}
     - name: test
       run: |
-        ls -a /opt/hostedtoolcache/Python/3.7.12/x64
+        tree /opt/hostedtoolcache/Python/3.7.12/x64
  #       pkg-config python-3.7 --libs
