@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        version: ['3.6']
+        version: ['3.8']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
@@ -18,4 +18,4 @@ jobs:
         python-version: ${{ matrix.version }}
     - name: test
       run: |
-        pkg-config python-3.6-embed --libs --cflags
+        pkg-config python-3.8 --libs
