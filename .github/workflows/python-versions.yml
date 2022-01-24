@@ -20,5 +20,5 @@ jobs:
       run: |
         export PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig
         ls $PKG_CONFIG_PATH
-        pkg-config python-3.8 --libs --cflags
+        pkg-config python-3.8-embed --libs --cflags
         python3-config --libs
