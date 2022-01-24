@@ -18,7 +18,7 @@ jobs:
         python-version: ${{ matrix.version }}
     - name: test
       run: |
-        export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$pythonLocation/lib/pkgconfig
+        export PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig
         ls $PKG_CONFIG_PATH
         pkg-config python-3.8 --libs
         python3-config --libs
