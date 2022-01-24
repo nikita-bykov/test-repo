@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        version: ['3.9.7']
+        version: ['3.9']
         os: ['ubuntu-latest', 'macos-latest', 'windows-latest']
     steps:
     - uses: actions/checkout@v2
@@ -20,6 +20,6 @@ jobs:
     - name: test
       run: |
         export PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig
-        ls $PKG_CONFIG_PATH
+        echo $PKG_CONFIG_PATH
         pkg-config python-3.8-embed --libs --cflags
         python3-config --libs
