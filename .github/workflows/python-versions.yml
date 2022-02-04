@@ -19,7 +19,5 @@ jobs:
         python-version: ${{ matrix.version }}
     - name: test
       run: |
-        export PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig
-        echo $PKG_CONFIG_PATH
         pkg-config python-3.8-embed --libs --cflags
         python3-config --libs
