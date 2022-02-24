@@ -6,24 +6,20 @@ on:
 jobs:
   test-python:
     name: Test Python
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        version: ['3.6', 'pypy-3.6']
+        version: ['3.8']
+        os: ['ubuntu-latest']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.version }}
-    # - name: Install dependencies
-    #   run: |
-    #     which python
-    #     which python3
-    # - name: Install dependencies
-    #   run: |
-    #     pip3 install virtualenv
-    #     python3 -m venv C:\temp\venv
-    #     dir C:\temp\venv\Scripts
-    #     C:\temp\venv\Scripts\activate.bat
-    #     pip3 install matplotlib scons
+    - name: test
+      run: |
+        export PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig
+        echo $PKG_CONFIG_PATH
+        pkg-config python-3.8-embed --libs --cflags
+        python3-config --libs
