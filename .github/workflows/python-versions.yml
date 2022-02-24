@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        version: [pypy-3.6, pypy-3.9]
+        version: ['3.7']
     steps:
     - uses: actions/checkout@v2
     - name: Set up PyPy
