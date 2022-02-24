@@ -8,7 +8,7 @@ jobs:
     runs-on:  ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-18.04]
         version: ['pypy-3.8-v7.3.8']
     steps:
     - uses: actions/checkout@v2
