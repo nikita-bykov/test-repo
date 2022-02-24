@@ -8,8 +8,8 @@ jobs:
     runs-on:  ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, macos-latest]
-        version: [pypy-3.7]
+        os: [ubuntu-latest]
+        version: [pypy-3.6, pypy-3.9]
     steps:
     - uses: actions/checkout@v2
     - name: Set up PyPy
