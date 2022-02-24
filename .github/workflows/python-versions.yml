@@ -4,22 +4,13 @@ on:
   push:
 
 jobs:
-  test-python:
-    name: Test Python
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        version: ['3.8']
-        os: ['ubuntu-latest']
+  build:
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 
+    - name: Set up PyPy
       uses: actions/setup-python@v2
       with:
-        python-version: ${{ matrix.version }}
-    - name: test
-      run: |
-        export PKG_CONFIG_PATH=$pythonLocation/lib/pkgconfig
-        echo $PKG_CONFIG_PATH
-        pkg-config python-3.8-embed --libs --cflags
-        python3-config --libs
+        python-version: "pypy-3.7"
+    - name: Test
+      run: python test_sqlite_version.py
