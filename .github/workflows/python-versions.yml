@@ -6,17 +6,24 @@ on:
 jobs:
   test-python:
     name: Test Python
-    runs-on: windows-latest
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        version: ['3.6', 'pypy-3.6']
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 
       uses: actions/setup-python@v2
       with:
-        python-version: '3.10'
-    - name: Install dependencies
-      run: |
-        pip3 install virtualenv
-        python3 -m venv C:\temp\venv
-        dir C:\temp\venv\Scripts
-        C:\temp\venv\Scripts\activate.bat
-        pip3 install matplotlib scons
+        python-version: ${{ matrix.version }}
+    # - name: Install dependencies
+    #   run: |
+    #     which python
+    #     which python3
+    # - name: Install dependencies
+    #   run: |
+    #     pip3 install virtualenv
+    #     python3 -m venv C:\temp\venv
+    #     dir C:\temp\venv\Scripts
+    #     C:\temp\venv\Scripts\activate.bat
+    #     pip3 install matplotlib scons

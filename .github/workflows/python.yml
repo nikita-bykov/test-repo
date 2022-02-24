@@ -9,7 +9,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
       name: Checkout source
@@ -23,7 +23,10 @@ jobs:
         python-version: '3.9'
     - name: where python
       run: |
-        gci -Recurse -Include *Python* -ErrorAction SilentlyContinue -Path "HKCU:\"
-        Get-ChildItem -Path HKCU:\Software\AppDataLow\Software
-        Get-ChildItem -Path HKCU:\Software\Python\PythonCore
-      shell: pwsh
+        pkg-config --debug 2>&1 | grep directory
+        
+
+    - name: where python
+      run: |
+        pkg-config --variable pc_path pkg-config
+
